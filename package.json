@@ -1,0 +1,14 @@
+{
+  "name": "sparrow_gulp_template",
+  "version": "2.0.0",
+  "description": "Start Build 13-10-2022",
+  "main": "gulpfile.js",
+  "devDependencies": {
+    "gulp": "^4.0.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Yevhenii Vorobei",
+  "license": "ISC"
+}
