@@ -1,9 +1,6 @@
-/**
- * == Файл импотра и подключения плагинов ==
- */
-import pug from "gulp-pug";
+import pug from "gulp-pug"; // https://gist.github.com/neretin-trike/53aff5afb76153f050c958b82abd9228
 import plumber from "gulp-plumber";
-import formatHtml from "gulp-format-html";
+import htmlBeautify from "gulp-html-beautify"; // https://www.npmjs.com/package/gulp-html-beautify
 
 
 
@@ -11,5 +8,5 @@ import formatHtml from "gulp-format-html";
 export const plugins = {
     pug: pug,
     plumber: plumber,
-    formatHtml: formatHtml
+    htmlBeautify: htmlBeautify
 }
