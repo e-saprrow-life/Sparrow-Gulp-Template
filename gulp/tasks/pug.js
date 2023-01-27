@@ -1,13 +1,11 @@
-export function pug2html() {
+export function html() {
 	return gulp.src(path.src.pug + '/*.pug')
-		.pipe(plugins.plumber({
-			errorHandler: function(err) {
-				notify.onError({
-					title: "Ошибка в PUG",
-					message: "<%= error.message %>"
-				})(err);
-			}
-		}))
+        .pipe(plugins.plumber(
+            plugins.notify.onError({
+                title: 'PUG ERROR',
+                message: "Error: <%= error.message %>" 
+            })
+        ))
 		.pipe(plugins.pug())
         .pipe(plugins.htmlBeautify({
             "indent_size": 4

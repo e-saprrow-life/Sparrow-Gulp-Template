@@ -12,10 +12,18 @@
   "devDependencies": {
     "browser-sync": "^2.27.11",
     "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^8.0.0",
     "gulp-cli": "^2.3.0",
+    "gulp-group-css-media-queries": "^1.2.2",
     "gulp-html-beautify": "^1.0.1",
+    "gulp-notify": "^4.0.0",
     "gulp-plumber": "^1.2.1",
     "gulp-pug": "^5.0.0",
-    "gulp-pugbem": "^2.2.4"
+    "gulp-pugbem": "^2.2.4",
+    "gulp-sass": "^5.1.0",
+    "sass": "^1.57.1"
+  },
+  "dependencies": {
+    "gulp-shorthand": "^1.1.0"
   }
 }

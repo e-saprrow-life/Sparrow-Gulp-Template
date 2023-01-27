@@ -24,12 +24,13 @@ function reloadServer(cb) {
 
 
 // Импорт задач:
-import { pug2html } from "./gulp/tasks/pug.js";
+import { html } from "./gulp/tasks/pug.js";
+import { css } from "./gulp/tasks/scss.js";
 
 
 function watcher() {
-    gulp.watch(path.src.pug, gulp.series(pug2html, reloadServer));
-    // gulp.watch(path.watch.scss,         scss );
+    gulp.watch(path.src.pug, gulp.series(html, reloadServer));
+    gulp.watch(path.watch.scss, gulp.series(css, reloadServer));
     // gulp.watch(path.watch.js,           js );
     // gulp.watch(path.watch.img,          images );
     // gulp.watch(path.watch.svgicons,     gulp.series(sprites, spriteHtmlWrite));
@@ -38,7 +39,8 @@ function watcher() {
 
 // Global Tasks
 const start = gulp.series(
-    pug2html, 
+    html, 
+    css,
     gulp.parallel(watcher)
 );
 
