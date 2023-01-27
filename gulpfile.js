@@ -8,6 +8,7 @@ global.gulp = gulp;         // Передаю в глобальную перем
 global.path = path;         // Передаю в глобальную переменнаю объект path с путями
 global.plugins = plugins;   // Передаю в глобальную переменнаю объект всех плагинов сборки
 
+
 // Настройки локального сервера
 plugins.server.create()
 plugins.server.init({
@@ -16,19 +17,14 @@ plugins.server.init({
     port: 3000,
 })
 
-function reloadServer() {
-	plugins.server.reload()
+function reloadServer(cb) {
+	plugins.server.reload();
+    cb();
 }
 
 
 // Импорт задач:
 import { pug2html } from "./gulp/tasks/pug.js";
-
-
-
-
-
-
 
 
 function watcher() {
