@@ -8,14 +8,42 @@ global.gulp = gulp;         // Передаю в глобальную перем
 global.path = path;         // Передаю в глобальную переменнаю объект path с путями
 global.plugins = plugins;   // Передаю в глобальную переменнаю объект всех плагинов сборки
 
+// Настройки локального сервера
+plugins.server.create()
+plugins.server.init({
+    server: path.build.root,
+    notify: false,
+    port: 3000,
+})
 
-// Tasks import:
+function reloadServer() {
+	plugins.server.reload()
+}
+
+
+// Импорт задач:
 import { pug2html } from "./gulp/tasks/pug.js";
-import { formatHtml } from "./gulp/tasks/format-html.js";
 
+
+
+
+
+
+
+
+function watcher() {
+    gulp.watch(path.src.pug, gulp.series(pug2html, reloadServer));
+    // gulp.watch(path.watch.scss,         scss );
+    // gulp.watch(path.watch.js,           js );
+    // gulp.watch(path.watch.img,          images );
+    // gulp.watch(path.watch.svgicons,     gulp.series(sprites, spriteHtmlWrite));
+}
 
 
 // Global Tasks
-// const start = gulp.series(pug2html, formatHtml);
-const start = gulp.series(pug2html);
+const start = gulp.series(
+    pug2html, 
+    gulp.parallel(watcher)
+);
+
 export { start }
