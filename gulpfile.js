@@ -23,13 +23,21 @@ function watcher() {
 }
 
 
+function cleanBuildFolder() {
+    return plugins.folderCleaner(path.build.root)
+}
+
+
+
 // Основная задача
 export const start = gulp.series(
+    cleanBuildFolder, 
     html, 
     css,
     javascript,
     gulp.parallel(watcher, initServer)
 );
+
 
 
 // Минификация css и js

@@ -20,6 +20,7 @@ export const path = {
     },
     watch: {
         pug: src_folder + '/pug/**/*.pug',
-        scss: src_folder + '/scss/**/*.scss'
+        scss: src_folder + '/scss/**/*.scss',
+        js: src_folder + '/js/**/*.js'
     }
 }
