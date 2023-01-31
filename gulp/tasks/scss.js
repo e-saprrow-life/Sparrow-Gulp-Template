@@ -16,3 +16,13 @@ export function css() {
     .pipe(plugins.groupMedia())
     .pipe(gulp.dest(path.build.css))
 }
+
+
+export function minCss() {
+    return gulp.src([
+        path.build.css + '/*.css', '!' + path.build.css + '/*.min.css' // см. Заметки
+    ])
+    .pipe(plugins.cleanCss())
+    .pipe(plugins.renamer({extname: ".min.css"}))
+    .pipe(gulp.dest(path.build.css))
+}
