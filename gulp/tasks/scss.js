@@ -20,7 +20,8 @@ export function css() {
 
 export function minCss() {
     return gulp.src([
-        path.build.css + '/*.css', '!' + path.build.css + '/*.min.css' // см. Заметки
+        path.build.css + '/*.css', 
+        '!' + path.build.css + '/*.min.css' // см. Заметки
     ])
     .pipe(plugins.cleanCss())
     .pipe(plugins.renamer({extname: ".min.css"}))

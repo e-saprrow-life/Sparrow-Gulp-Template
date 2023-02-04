@@ -1,5 +1,4 @@
 // Импорт модулей
-// import fs from "fs"; 
 import {deleteAsync} from 'del';
 import browserSync from "browser-sync"; 
 import plumber from "gulp-plumber";
@@ -23,9 +22,15 @@ import cleanCss from 'gulp-clean-css';
 // JS
 import uglify from 'gulp-uglify';
 
+// images
+import newer from 'gulp-newer';
+import imagemin from 'gulp-imagemin';
+import webpConverter from 'gulp-webp';
+
+
+
 // Создаю глобальный объект с модулями
 export const plugins = {
-    // fs: fs,
     folderCleaner: deleteAsync,
     server: browserSync,
     plumber: plumber,
@@ -39,5 +44,8 @@ export const plugins = {
     autoprefixer: autoprefixer,
     groupMedia: groupMedia,
     cleanCss: cleanCss,
-    uglify: uglify
+    uglify: uglify,
+    newer: newer,
+    imagemin: imagemin,
+    webpConverter: webpConverter
 }
