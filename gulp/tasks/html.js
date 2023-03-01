@@ -1,5 +1,5 @@
 export function html() {
-	return gulp.src(path.src.pug + '/*.pug')
+	return gulp.src(path.src.root + '/**/*.pug')
         .pipe(plugins.plumber(
             plugins.notify.onError({
                 title: 'PUG ERROR',
@@ -10,6 +10,5 @@ export function html() {
         .pipe(plugins.htmlBeautify({
             "indent_size": 4
         }))
-        .pipe(gulp.dest(path.src.root))
 		.pipe(gulp.dest(path.build.root))
 }

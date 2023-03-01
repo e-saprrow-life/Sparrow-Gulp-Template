@@ -1,4 +1,5 @@
 // Импорт модулей
+import fs from "fs";
 import {deleteAsync} from 'del';
 import browserSync from "browser-sync"; 
 import plumber from "gulp-plumber";
@@ -26,11 +27,13 @@ import uglify from 'gulp-uglify';
 import newer from 'gulp-newer';
 import imagemin from 'gulp-imagemin';
 import webpConverter from 'gulp-webp';
+import svgSprite from 'gulp-svg-sprite';
 
 
 
 // Создаю глобальный объект с модулями
 export const plugins = {
+    fs: fs,
     folderCleaner: deleteAsync,
     server: browserSync,
     plumber: plumber,
@@ -47,5 +50,6 @@ export const plugins = {
     uglify: uglify,
     newer: newer,
     imagemin: imagemin,
-    webpConverter: webpConverter
+    webpConverter: webpConverter,
+    svgSprite: svgSprite
 }

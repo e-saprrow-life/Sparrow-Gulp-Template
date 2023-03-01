@@ -6,7 +6,6 @@ export function imagesMin() {
             message: "Error: <%= error.message %>" 
         })
     ))
-
     .pipe(plugins.newer(path.build.img))
     .pipe(plugins.imagemin({
             progressive: true,
@@ -14,12 +13,11 @@ export function imagesMin() {
                 removeViewBox: false 
             }],
             interLaced: true,
-            optimizationLevel: 7 // 0 - 7 
+            optimizationLevel: 4 // 0 - 7 
         })
     )
     .pipe(gulp.dest(path.build.img))
 }
-
 
 
 export function convertToWebP() {
@@ -30,7 +28,6 @@ export function convertToWebP() {
             message: "Error: <%= error.message %>" 
         })
     ))
-
     .pipe(plugins.newer(path.build.img))
     .pipe(plugins.webpConverter())
     .pipe(gulp.dest(path.build.img))

@@ -1,5 +1,5 @@
 {
-    "name": "sparrow_gulp_template",
+    "name": "Sparrow Gulp Layout Template",
     "version": "2.0.0",
     "description": "Start Build 13-10-2022",
     "main": "gulpfile.js",
@@ -8,7 +8,7 @@
         "s": "gulp start",
         "min": "gulp min"
     },
-    "author": "Yevhenii Vorobei",
+    "author": "Yevhenii Vorobei (Sparrow)",
     "license": "ISC",
     "devDependencies": {
         "browser-sync": "^2.27.11",
@@ -28,6 +28,7 @@
         "gulp-pugbem": "^2.2.4",
         "gulp-rename": "^2.0.0",
         "gulp-sass": "^5.1.0",
+        "gulp-svg-sprite": "^1.5.0",
         "gulp-uglify": "^3.0.2",
         "gulp-webp": "^4.0.1",
         "sass": "^1.57.1"

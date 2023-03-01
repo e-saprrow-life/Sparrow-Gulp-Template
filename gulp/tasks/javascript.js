@@ -5,7 +5,7 @@ export function javascript() {
     ])
     .pipe(plugins.plumber(
         plugins.notify.onError({
-            title: 'JAvaScript ERROR',
+            title: 'JavaScript ERROR',
             message: "Error: <%= error.message %>" 
         })
     ))
