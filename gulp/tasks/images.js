@@ -1,3 +1,4 @@
+// Минификация изображений
 export function imagesMin() {
     return gulp.src(path.src.img + '/**/*.*')
     .pipe(plugins.plumber(
@@ -19,7 +20,7 @@ export function imagesMin() {
     .pipe(gulp.dest(path.build.img))
 }
 
-
+// Конвертация изображений в webp
 export function convertToWebP() {
     return gulp.src(path.src.img + '/**/*.*')
     .pipe(plugins.plumber(

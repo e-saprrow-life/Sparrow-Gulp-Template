@@ -1,15 +1,11 @@
 doctype html
 html(lang="en")
-    head
-        meta(charset="UTF-8")
-        meta(name="viewport", content="width=device-width, initial-scale=1.0")
-        title Document
-        link(rel="stylesheet", href="css/style.css")
+    include pug/common/_head.pug
+    
     body 
         .wrapper 
-            .test.i-01 hello
+            include pug/_header.pug
+            include pug/_footer.pug
 
         script(src="js/libs.js")
         script(src="js/script.js")
-        //- include pug/common/_sprite.pug
-        include sprite/sprite.svg

@@ -1,5 +1,5 @@
 @import 'common/_settings';
-// @import 'sprite/_settings';
+
 body {
     font-size: 14px;
     color: #333333;
@@ -13,3 +13,5 @@ body {
     flex-shrink: 1;
     flex: auto;
 }
+
+@import '_sections';

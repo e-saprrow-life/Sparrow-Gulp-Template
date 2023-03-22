@@ -1,3 +1,7 @@
+/*
+ - Преобразование с pug в html
+ - Растановка удобных отступов в html  
+ */
 export function html() {
 	return gulp.src(path.src.root + '/**/*.pug')
         .pipe(plugins.plumber(
