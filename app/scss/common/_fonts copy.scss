@@ -1,0 +1,21 @@
+@font-face { // Old
+    font-family: $fontName;
+    font-display: swap;
+    font-weight: $fontWeight;
+    font-style: $fontStyle;
+    src: url("../fonts/fontFileName.woff2") format("woff2"), 
+         url("../fonts/fontFileName.woff")  format("woff");
+}
+
+@font-face { // CUSTOM
+    font-family: $font-family;
+    font-weight: $weight;
+    font-style: $style;
+    font-display: swap;
+    src: url('#{$file-path}.eot');
+    src: url('#{$file-path}.eot?#iefix')               format('embedded-opentype'),
+         url('#{$file-path}.woff')                     format('woff'),
+         url('#{$file-path}.woff2')                    format('woff2'),
+         url('#{$file-path}.ttf')                      format('truetype'),
+         url('#{$file-path}.svg##{$font-family}')      format('svg');
+}

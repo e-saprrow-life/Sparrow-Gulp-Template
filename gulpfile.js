@@ -10,6 +10,7 @@ import { css, minCss } from "./gulp/tasks/scss.js";
 import { javascript, minJs } from "./gulp/tasks/javascript.js";
 import { imagesMin, convertToWebP } from "./gulp/tasks/images.js";
 import { createSprite } from "./gulp/tasks/sprite.js"
+import { convertFonts, cleanFontsFolder, importFonts } from "./gulp/tasks/fonts.js"
 
 global.gulp    = gulp;      // Передаю в глобальную переменную основной модуль gulp
 global.path    = path;      // Передаю в глобальную переменнаю объект path с путями
@@ -29,7 +30,11 @@ function cleanBuildFolder() {
 
 // Основная задача
 export const start = gulp.series(cleanBuildFolder, html, css, javascript, createSprite, gulp.parallel(imagesMin), gulp.parallel(watcher, initServer));
-// export const start = gulp.series(createSprite, createPugSprite);
 
 // Минификация css и js
 export const min = gulp.parallel(minCss, minJs);
+
+// Работа со шрифтами (дописать запись в файл)
+export const fonts = gulp.series(cleanFontsFolder, convertFonts, importFonts);
+
+export const wf = gulp.series(importFonts);

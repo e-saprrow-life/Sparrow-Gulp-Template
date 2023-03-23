@@ -12,14 +12,16 @@ export const path = {
         scss: src_folder + '/scss',
         js: src_folder + '/js',
         img: src_folder + '/img',
-        sprite: src_folder + '/sprite'
+        sprite: src_folder + '/sprite',
+        fonts: src_folder + '/fonts'
     },
     build: {
         root: build_folder + '/',
         css: build_folder + '/css',
         js: build_folder + '/js',
         img: build_folder + '/img',
-        sprite: src_folder + '/img/sprite'
+        sprite: src_folder + '/img/sprite',
+        fonts: build_folder + '/fonts'
     },
     watch: {
         pug: src_folder + '/**/*.pug',
