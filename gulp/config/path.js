@@ -25,8 +25,11 @@ export const path = {
     },
     watch: {
         pug: src_folder + '/**/*.pug',
-        scss: src_folder + '/scss/**/*.scss',
-        js: src_folder + '/js/**/*.js',
-        img: src_folder + '/img/**/*.*'
+        styles: [src_folder + '/scss/**/*.scss', '!' + src_folder + '/scss/libs.scss'],
+        libsCss: src_folder + '/scss/libs.scss',
+        scripts: [src_folder + '/js/**/*.js', '!' + src_folder + '/js/libs.js'],
+        libsJs: src_folder + '/js/libs.js',
+        img: src_folder + '/img/**/*.*',
+        sprite: src_folder + '/sprite/source/*.*'
     }
 }

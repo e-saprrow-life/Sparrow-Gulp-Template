@@ -1,0 +1,101 @@
+// Normalize
+* {
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+:focus,
+:active {
+    outline: none;
+}
+
+a:focus,
+a:active {
+    outline: none;
+}
+
+a,
+a:visited,
+a:hover {
+    text-decoration: none;
+    color: inherit;
+}
+
+nav,
+footer,
+header,
+aside {
+    display: block;
+}
+
+.body {
+    height: 100%;
+    width: 100%;
+    touch-action: pan-x pan-y; // Отключает масштабирование на IOS > 13.5
+    -ms-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+
+button {
+    cursor: pointer;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+button::-moz-focus-inner {
+    padding: 0;
+    border: 0;
+}
+
+button,
+input,
+textarea {
+    font-family: inherit;
+}
+// Убирает крестик в поле инпута в браузере IE 
+input::-ms-clear {
+    display: none;
+}
+
+// Убрать точки списка
+ul li {
+    list-style: none;
+}
+
+// Убрать точки списка
+li::marker {
+    font-size: 0;
+}
+
+img {
+    vertical-align: top;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-size: inherit;
+    font-weight: 400;
+}
+
+
+// Custom
+.svg-sprites-pack {
+    display: none;
+}
+
+svg.sprite {
+    height: 100%;
+    width: 100%;
+}

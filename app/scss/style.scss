@@ -1,19 +1,4 @@
 @import 'common/_mixins';
-@import 'common/_settings';
 @import 'common/_fonts';
-
-body {
-    font-size: 14px;
-    color: #333333;
-    font-weight: 400;
-    font-family: Arial;
-    line-height: 1.5;
-    display: flex;
-    flex-wrap: wrap;
-    flex-grow: 1;
-    flex-direction: column;
-    flex-shrink: 1;
-    flex: auto;
-}
-
+@import 'common/_normalize';
 @import '_sections';

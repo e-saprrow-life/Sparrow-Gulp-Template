@@ -1,36 +1,34 @@
 export function convertFonts() {
     return gulp.src(path.src.fonts + '/**/*.ttf')
-    .pipe(plugins.plumber(
-        plugins.notify.onError({
-            title: 'Fonts Convertation ERROR',
-            message: "Error: <%= error.message %>" 
-        })
-    ))
-    .pipe(gulp.dest(path.build.fonts))
-    .pipe(plugins.fonter({
-        formats: ['woff', 'eot']
-    }))
-    .pipe(gulp.dest(path.build.fonts))    
+    // ttf to woff & eot
+    .pipe(plugins.fonter({ formats: ['woff', 'eot'] }))
+    .pipe(gulp.dest(path.src.fonts))    
+    // ttf to woff2
     .pipe(gulp.src(path.src.fonts + '/**/*.ttf'))
     .pipe(plugins.ttf2woff2())
-    .pipe(gulp.dest(path.build.fonts))    
+    .pipe(gulp.dest(path.src.fonts))    
 }
 
 
-export function cleanFontsFolder() {
-    return plugins.folderCleaner(path.build.fonts)
+
+// Перемещает готовые шрифты в build/fonts
+export function replaceReadyFonts() {
+    return gulp.src(path.src.fonts + '/**/*.*')
+    .pipe(gulp.dest(path.build.fonts)) 
 }
 
+
+
+// Записывает в _fonts.scss миксин для подключения каждого скрипта
 export async function importFonts() {
     let fontsFilePath = path.src.scss + "/common/_fonts.scss";
     if (plugins.fs.existsSync(fontsFilePath)) {
-        console.log('Файл ' + fontsFilePath + " существует. Продолжаю.");
         let files = getFiles(path.src.fonts)
         for (let i in files) {
             let fontPath =  files[i].split('.')[0];
             plugins.fs.writeFile(fontsFilePath, '', cb);
             plugins.fs.appendFile(fontsFilePath, `@include font-face("${getFontFamily(files[i])}", "../fonts/${fontPath}", ${getFontWeight(files[i])}, ${getFontStyle(files[i])});\n`, cb);
-
+            console.log('Файл шрифта ' + '"' + fontPath + '" ' + 'подключен.' )
         }
     } else {
         console.log('Файл ' + fontsFilePath + " не существует")
@@ -38,13 +36,17 @@ export async function importFonts() {
 }
 
 
+
 function cb() {}
 
 
+
+// Возвращает масив с именами фалов в паке app/fonts а так же в подпапках
 function getFiles(dir, files = [], subdir) {
     const entries = plugins.fs.readdirSync(dir, { withFileTypes: true });
     for (const entry of entries) {
         const fullpath = plugins.path.join(dir, entry.name);
+        if (!isTTF(entry.name)) continue;
         if (entry.isDirectory()) {
            getFiles(fullpath, files, entry.name);
         } else if (subdir) {
@@ -56,6 +58,19 @@ function getFiles(dir, files = [], subdir) {
     return files;
 }
 
+
+
+// Возвращает true если fontsFileName имеет расширение .ttf
+function isTTF(fontsFileName) {
+    let skipFontsFormat = ['.eot', '.woff', '.woff2'];
+    for (let fontFormat of skipFontsFormat) {
+        if (fontsFileName.indexOf(fontFormat) > 0) return false;
+    };
+    return true; 
+}
+
+
+
 // Возвращает font-family
 function getFontFamily(entry) {
     let fileName = entry.split('/')[1] ? entry.split('/')[1] : entry;
@@ -65,6 +80,7 @@ function getFontFamily(entry) {
         return fileName.split('.')[0]
     }
 }
+
 
 
 // Возвращает font-weight
@@ -90,6 +106,8 @@ function getFontWeight(entry) {
         return 400;
     }
 }
+
+
 
 // Возвращает font-style
 function getFontStyle(entry) {

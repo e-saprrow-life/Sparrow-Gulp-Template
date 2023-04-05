@@ -1,11 +1,10 @@
 doctype html
-html(lang="en")
+html(lang="uk")
     include pug/common/_head.pug
     
     body 
         .wrapper 
             include pug/_header.pug
+                
             include pug/_footer.pug
-
-        script(src="js/libs.js")
-        script(src="js/script.js")
+            include pug/common/_scripts.pug

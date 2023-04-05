@@ -1,5 +1,5 @@
-export function css() {
-    return gulp.src(path.src.scss + '/**/*.scss')
+export function styles() {
+    return gulp.src(path.src.scss + '/style.scss')
     .pipe(plugins.plumber(
         plugins.notify.onError({
             title: 'SCSS ERROR',
@@ -18,11 +18,19 @@ export function css() {
 }
 
 
-export function minCss() {
-    return gulp.src([
-        path.build.css + '/*.css', 
-        '!' + path.build.css + '/*.min.css' // см. Заметки
-    ])
+
+export function libsCss() {
+    return gulp.src(path.src.scss + '/libs.scss')
+    .pipe(plugins.scss())
+    .pipe(plugins.cleanCss())
+    .pipe(plugins.renamer({extname: ".min.css"}))
+    .pipe(gulp.dest(path.build.css))
+}
+
+
+
+export function minStyleCss() {
+    return gulp.src(path.build.css + '/style.css')
     .pipe(plugins.cleanCss())
     .pipe(plugins.renamer({extname: ".min.css"}))
     .pipe(gulp.dest(path.build.css))
