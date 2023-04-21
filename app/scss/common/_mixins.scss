@@ -11,3 +11,11 @@
              url('#{$file-path}.ttf')          format('truetype'),
 	}
 }
+
+@mixin desktop { @media (min-width: 1261px) { @content; } }
+@mixin tablet { @media (max-width: 1260px) { @content; } }
+@mixin mob { @media (max-width: 760px) { @content; } }
+
+@function px($val) {
+    @return calc($val / 10) + rem;
+}

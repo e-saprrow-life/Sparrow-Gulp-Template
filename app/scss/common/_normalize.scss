@@ -1,4 +1,3 @@
-// Normalize
 * {
     padding: 0;
     margin: 0;
@@ -60,6 +59,7 @@ input,
 textarea {
     font-family: inherit;
 }
+
 // Убирает крестик в поле инпута в браузере IE 
 input::-ms-clear {
     display: none;
@@ -87,15 +87,4 @@ h5,
 h6 {
     font-size: inherit;
     font-weight: 400;
-}
-
-
-// Custom
-.svg-sprites-pack {
-    display: none;
-}
-
-svg.sprite {
-    height: 100%;
-    width: 100%;
 }
