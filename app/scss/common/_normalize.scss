@@ -8,6 +8,7 @@
 *:before,
 *:after {
     box-sizing: border-box;
+    outline: none;
 }
 
 :focus,
@@ -45,6 +46,8 @@ aside {
 
 button {
     cursor: pointer;
+    background: none;
+    font-size: inherit;
     -webkit-appearance: none;
     appearance: none;
 }

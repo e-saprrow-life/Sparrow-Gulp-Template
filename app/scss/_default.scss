@@ -1,18 +1,21 @@
 html {
-    font-size: 10px;
+    // font-size: 10px;
 }
+
 body {
 	font-family: var(--ff-default), Helvetica, Arial, sans-serif;
-	// font-weight: 400;
 	font-size: var(--fz-default);
-	line-height: 1.4;
+    font-weight: var(--fw-default);
+	line-height: var(--lh-default);
+    color: var(--text-color-default);
 	min-width: 360px;
-	// color: var(--text-color);
-	// position: relative;
-	// background-color: var(--bg);
-	// -webkit-font-smoothing: antialiased;
-	// -moz-osx-font-smoothing: grayscale;
-    min-height: 1000px;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+    &._lock {
+        height: 100%;
+        width: 100%;
+        overflow: hidden;
+    }
 }
 
 .wrapper {
@@ -24,8 +27,7 @@ body {
     min-height: 100vh;
 }
 
-header,
-footer {
+header, footer {
     flex: 0 0 auto;
 }
 
@@ -40,11 +42,7 @@ main {
     width: 100%;
 }
 
-
-
-.svg-sprites-pack {
-    display: none;
-}
+.svg-sprites-pack { display: none; }
 
 svg.sprite {
     height: 100%;

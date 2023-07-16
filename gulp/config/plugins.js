@@ -6,7 +6,7 @@ import browserSync from "browser-sync";
 import plumber from "gulp-plumber";
 import notify from "gulp-notify";
 import renamer from "gulp-rename";
-import fileInclude from "gulp-file-include";    // https://openbase.com/js/gulp-file-include/documentation  https://www.npmjs.com/package/gulp-file-include
+import fileInclude from "gulp-file-include";    // https://www.npmjs.com/package/gulp-file-include  https://github.com/haoxins/gulp-file-include
 import pug from "gulp-pug";                     // https://gist.github.com/neretin-trike/53aff5afb76153f050c958b82abd9228
 import htmlBeautify from "gulp-html-beautify";  // https://www.npmjs.com/package/gulp-html-beautify
 import dartSass from 'sass';
@@ -27,7 +27,7 @@ import ttf2woff2 from 'gulp-ttf2woff2';
 export const plugins = {
     fs: fs,
     path: path,
-    folderCleaner: deleteAsync,
+    cleaner: deleteAsync, // Чистит указанную папку
     server: browserSync,
     plumber: plumber,
     notify: notify,

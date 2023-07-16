@@ -1,6 +1,7 @@
 @import 'common/_mixins';
 @import 'common/_fonts';
 @import 'common/_normalize';
+
 @import '_variables';
 @import '_default';
 @import '_buttons';
@@ -8,44 +9,3 @@
 @import '_header';
 @import '_sections';
 @import '_footer';
-
-
-// .header {
-//     background: rgba(255, 0, 0, 0.294);
-//     &__container {
-//         padding-top: 1.5rem;
-//         padding-bottom: 1.5rem;
-//         display: flex;
-//         align-items: center;
-//     }
-// }
-// main {
-//     background: rgba(0, 0, 255, 0.418);
-// }
-// .footer {
-//     background: rgba(0, 128, 0, 0.311);
-//     &__container {
-//         padding-top: px(50);
-//         padding-bottom: px(50);
-//         display: flex;
-//         align-items: center;
-//     }
-// }
-
-// .test {
-//     &__container {}
-// }
-
-// .decor-wrapper {
-//     display: flex;
-//     .decor-1 {
-//         flex: 50%;
-//         height: px(300);
-//         background-size: cover;
-//     }
-//     .decor-2 {
-//         flex: 50%;
-//         height: px(300);
-//         background-color: orange;
-//     }
-// }

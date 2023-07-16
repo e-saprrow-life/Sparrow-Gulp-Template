@@ -11,7 +11,3 @@ export function reloadServer(cb) {
 	plugins.server.reload();
     cb();
 }
-
-export function cleanBuildFolder() {
-    return plugins.folderCleaner(path.build.root)
-}

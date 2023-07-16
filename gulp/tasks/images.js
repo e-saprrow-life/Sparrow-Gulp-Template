@@ -1,9 +1,13 @@
+/** Копирование изображений из рабочей папки в итоговую. 
+ * - чистит папку ./build/img
+ * - перемещает изображения из ./app/img в ./build/img
+ */
 export function copyImages() {
-    plugins.folderCleaner(path.build.img)
-    return gulp.src(path.src.img + '/**/*.*')
+    plugins.cleaner(path.build.img + '/**/*.*')
+    return gulp.src([`${path.src.img}/**/*.*`, `!${path.src.img}/sprite-source/*.svg`])
     .pipe(plugins.plumber(
         plugins.notify.onError({
-            title: '=== Copy Images ERROR ===',
+            title: '=== Images ERROR ===',
             message: "Error: <%= error.message %>" 
         })
     ))
@@ -12,9 +16,14 @@ export function copyImages() {
 
 
 
+/** Копирование изображений из рабочей папки в итоговую. 
+ * - чистит папку ./build/img
+ * - ужимает изображения
+ * - помещает изображения в ./build/img
+ */
 export function imagesMin() {
-    // plugins.folderCleaner(path.build.img)
-    return gulp.src(path.src.img + '/**/*.*')
+    plugins.cleaner(path.build.img + '/**/*.*')
+    return gulp.src([`${path.src.img}/**/*.*`, `!${path.src.img}/sprite-source/*.svg`])
     .pipe(plugins.plumber(
         plugins.notify.onError({
             title: '=== Images Min ERROR ===',

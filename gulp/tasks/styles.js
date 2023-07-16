@@ -1,4 +1,4 @@
-export function styles() {
+export function css() {
     return gulp.src(path.src.scss + '/style.scss')
     .pipe(plugins.plumber(
         plugins.notify.onError({
@@ -19,7 +19,7 @@ export function styles() {
 
 
 
-export function libsCss() {
+export function cssLibs() {
     return gulp.src(path.src.scss + '/libs.scss')
     .pipe(plugins.scss())
     .pipe(plugins.cleanCss())
@@ -29,7 +29,7 @@ export function libsCss() {
 
 
 
-export function minStyleCss() {
+export function minCss() {
     return gulp.src(path.build.css + '/style.css')
     .pipe(plugins.cleanCss())
     .pipe(plugins.renamer({extname: ".min.css"}))

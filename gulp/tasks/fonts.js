@@ -1,34 +1,31 @@
 export function convertFonts() {
+    plugins.cleaner(path.build.fonts)
     return gulp.src(path.src.fonts + '/**/*.ttf')
     // ttf to woff & eot
     .pipe(plugins.fonter({ formats: ['woff', 'eot'] }))
-    .pipe(gulp.dest(path.src.fonts))    
+    .pipe(gulp.dest(path.build.fonts))    
     // ttf to woff2
     .pipe(gulp.src(path.src.fonts + '/**/*.ttf'))
     .pipe(plugins.ttf2woff2())
-    .pipe(gulp.dest(path.src.fonts))    
+    .pipe(gulp.dest(path.build.fonts))
+    // replace ttf
+    .pipe(gulp.src(path.src.fonts + '/**/*.ttf'))
+    .pipe(gulp.dest(path.build.fonts))
 }
 
 
 
-// Перемещает готовые шрифты в build/fonts
-export function replaceReadyFonts() {
-    return gulp.src(path.src.fonts + '/**/*.*')
-    .pipe(gulp.dest(path.build.fonts)) 
-}
-
-
-
-// Записывает в _fonts.scss миксин для подключения каждого скрипта
+// Добавляет в _fonts.scss запись подключения каждого шифта используя миксин
 export async function importFonts() {
     let fontsFilePath = path.src.scss + "/common/_fonts.scss";
     if (plugins.fs.existsSync(fontsFilePath)) {
-        let files = getFiles(path.src.fonts)
+        let files = getFiles(path.build.fonts)
+        if (files.length == 0) return;
         for (let i in files) {
             let fontPath =  files[i].split('.')[0];
             plugins.fs.writeFile(fontsFilePath, '', cb);
             plugins.fs.appendFile(fontsFilePath, `@include font-face("${getFontFamily(files[i])}", "../fonts/${fontPath}", ${getFontWeight(files[i])}, ${getFontStyle(files[i])});\n`, cb);
-            console.log('Файл шрифта ' + '"' + fontPath + '" ' + 'подключен.' )
+            // console.log('Файл шрифта ' + '"' + fontPath + '" ' + 'подключен.' )
         }
     } else {
         console.log('Файл ' + fontsFilePath + " не существует")

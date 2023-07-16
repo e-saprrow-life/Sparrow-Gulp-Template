@@ -1,19 +1,17 @@
 :root {
-    // --body-min-w: 1920px;
-
+    // default typography 
     --ff-default: "Gilroy";
-    --fz-default: 1.6rem;
+    --fz-default: 1rem;
+    --fw-default: 400;
+    --lh-default: 1.4;
+    --text-color-default: #333333;
     // --container-w: 1260px;
     --container-w: 126rem;
     --sp: 50px; 
     @include tablet {
-        // --body-min-w: 800px;
-        // --container-w: 760px;
-        --container-w: 76rem;
+       
     }
     @include mob {
-        --container-w: 360px;
-        // --container-w: 48rem;
-        // --body-min-w: 360px;
+       
     }
 }
