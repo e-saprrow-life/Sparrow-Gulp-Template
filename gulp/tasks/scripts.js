@@ -10,7 +10,7 @@ export function js() {
                 message: "Error: <%= error.message %>"
             })
         ))
-        .pipe(jsImportFile())
+        .pipe(jsFileImport())
         .pipe(gulp.dest(path.build.js))
 }
 
@@ -24,7 +24,7 @@ export function js() {
  */
 export function jsLibs() {
     return gulp.src(path.src.js + '/libs.js')
-        .pipe(jsImportFile())
+        .pipe(jsFileImport())
         .pipe(plugins.uglify({
             mangle: false,
             output: {
@@ -51,10 +51,12 @@ export function minJs() {
 
 
 
-/** Дополнительная функция. Позволяет импортировать другие файлы js в основной. Работает только с основным файлом. 
+/** Дополнительная функция. Позволяет импортировать другие файлы js в основной. 
+ * Работает только с основным файлом. 
  * Импорт внутри импортируемого файла работать не будет. */
 import through2 from "through2";
-function jsImportFile(file) {
+
+function jsFileImport(file) {
     return through2.obj(function(file, encoding, cb) {
         if (file.isNull()) {
             cb(null, file);
@@ -65,17 +67,21 @@ function jsImportFile(file) {
         let sourceFilePaht = plugins.path.relative(process.cwd(), file.dirname);
 
         // Регулярные выражения
-        const includeRegex = /@import\s*\(\s*['"](.+?)['"]\s*\)/g;       // Для директивы "@import('path')"
-        const excludeRegex = /\/\/@import\s*\(\s*['"](.+?)['"]\s*\)/g;  // Для директивы "// @import('path')"
+        const includeRegex = /import\(\s*['"](.+?)['"]\s*\)/g;          // Для директивы @import('path')
+        const excludeRegex1 = /\/\/\s*import\(\s*['"](.+?)['"]\s*\)\s*/g;  // Для директивы // @import('path')
+        const excludeRegex2 = /\/\*\s*import\s*\(\s*['"](.+?)['"]\s*\)\s*\*\/\s*/g;  // Для директивы /* @import('path') */
 
         // Сохраняю содержимое файла как строку
         const contents = file.contents.toString();
 
         /**
-         * Ищу в файле директиву @import() и если она не закоментированная вставляю 
+         * Ищу в файле директиву import() и если она не закоментированная вставляю 
          * содержимое указаноого файла в конечный файл
          */
-        const replacedContents = contents.replace(excludeRegex, '').replace(includeRegex, (match, includePath) => {
+        const replacedContents = contents
+        .replace(excludeRegex1, '')
+        .replace(excludeRegex2, '')
+        .replace(includeRegex, (match, includePath) => {
             let soursePath = plugins.path.resolve(sourceFilePaht, includePath); // получаю путь относительно файла libs.js
             return plugins.fs.readFileSync(soursePath, 'utf8');
         });

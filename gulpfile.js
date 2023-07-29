@@ -37,7 +37,8 @@ export const start = gulp.series(
     createSprite,
     gulp.parallel(pug2html, css, cssLibs, js, jsLibs, copyImages),
     // gulp.parallel(pug2html, css, cssLibs, copyImages),
-    gulp.parallel(watcher, initServer) 
+    gulp.parallel(watcher) 
+    // gulp.parallel(watcher, initServer) 
 );
 
 export const libs = gulp.series(jsLibs);

@@ -23,7 +23,6 @@ import svgSprite from 'gulp-svg-sprite';
 import fonter from 'gulp-fonter';
 import ttf2woff2 from 'gulp-ttf2woff2';
 
-
 export const plugins = {
     fs: fs,
     path: path,
