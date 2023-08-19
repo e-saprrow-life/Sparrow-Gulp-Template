@@ -22,11 +22,12 @@ import webpConverter from 'gulp-webp';
 import svgSprite from 'gulp-svg-sprite';
 import fonter from 'gulp-fonter';
 import ttf2woff2 from 'gulp-ttf2woff2';
+import newer from 'gulp-newer';
 
 export const plugins = {
     fs: fs,
     path: path,
-    cleaner: deleteAsync, // Чистит указанную папку
+    cleaner: deleteAsync,
     server: browserSync,
     plumber: plumber,
     notify: notify,
@@ -45,4 +46,5 @@ export const plugins = {
     svgSprite: svgSprite,
     fonter: fonter,
     ttf2woff2: ttf2woff2,
+    newer: newer,
 }

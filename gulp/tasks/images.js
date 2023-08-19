@@ -2,7 +2,7 @@
  * - чистит папку ./build/img
  * - перемещает изображения из ./app/img в ./build/img
  */
-export function copyImages() {
+export function img() {
     plugins.cleaner(path.build.img + '/**/*.*')
     return gulp.src([`${path.src.img}/**/*.*`, `!${path.src.img}/sprite-source/*.svg`])
     .pipe(plugins.plumber(
@@ -11,6 +11,7 @@ export function copyImages() {
             message: "Error: <%= error.message %>" 
         })
     ))
+    // .pipe(plugins.cleaner(path.build.img + '/**/*.*'))
     .pipe(gulp.dest(path.build.img))
 }
 

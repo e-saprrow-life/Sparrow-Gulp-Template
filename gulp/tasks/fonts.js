@@ -19,17 +19,16 @@ export function convertFonts() {
 export async function importFonts() {
     let fontsFilePath = path.src.scss + "/common/_fonts.scss";
     if (plugins.fs.existsSync(fontsFilePath)) {
-        let files = getFiles(path.build.fonts)
+        let files = getFiles(path.src.fonts)
         if (files.length == 0) return;
         for (let i in files) {
             let fontPath =  files[i].split('.')[0];
             plugins.fs.writeFile(fontsFilePath, '', cb);
             plugins.fs.appendFile(fontsFilePath, `@include font-face("${getFontFamily(files[i])}", "../fonts/${fontPath}", ${getFontWeight(files[i])}, ${getFontStyle(files[i])});\n`, cb);
-            // console.log('Файл шрифта ' + '"' + fontPath + '" ' + 'подключен.' )
+            console.log('Подключен шрифт - ' + fontPath)
         }
-    } else {
-        console.log('Файл ' + fontsFilePath + " не существует")
     }
+    return;
 }
 
 

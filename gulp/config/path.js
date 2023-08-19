@@ -9,7 +9,8 @@ export const path = {
         img:      src_folder + '/img',
         sprite:   src_folder + '/icons',
         fonts:    src_folder + '/fonts',
-        pug:    src_folder + '/pug'
+        pug:      src_folder + '/pug',
+        map:      'app\\'
     },
     build: {
         root:     build_folder + '/',

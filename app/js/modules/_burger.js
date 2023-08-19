@@ -1,2 +1,1 @@
-//= Burger 
-    console.log('burger menu')
+console.log('burger menu')
