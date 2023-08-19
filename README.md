@@ -2,10 +2,8 @@
 
 ## Common Template commands:
 
-* __npm run start__ - start development
+* `npm run start` - start development
 
-* __npm run fonts__ - convert & import fonts
+* `npm run fonts` - convert & import fonts
 
-* __npm run min__ - Minification of styles, scripts and images 
-
-## HTML
+* `npm run min` - Minification of styles, scripts and images 
